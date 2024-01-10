@@ -82,24 +82,24 @@ galleryList.insertAdjacentHTML(`beforeend`, gallery);
 
        galleryList.addEventListener("click", (event) => {
         event.preventDefault();
-        const imageLink = event.target.dataset.source;
+        const imgLink = event.target.dataset.source;
         const description = event.target.alt;
 
-        if (event.target.nodeName !== "IMG") return;
+         if (event.target.nodeName !== "IMG") return;
 
           const window = basicLightbox.create(`
-            <img width="1440" height="696" src="${imageLink}" alt="${description}">`, {
+            <img width="1440" height="696" src="${imgLink}" alt="${description}">`, {
               className: 'modal',
               onShow: () => {
-                document.addEventListener("keydown", keyDwn)
+                document.addEventListener("keydown", closeModal)
               },
               onClose: () => {
-                document.removeEventListener("keydown", keyDwn)
+                document.removeEventListener("keydown", closeModal)
               }
             });
             window.show();
 
-            function keyDwn (event) {
+            function closeModal (event) {
               if (event.key === "Escape") {
                 window.close()
               }
