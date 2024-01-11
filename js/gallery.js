@@ -85,7 +85,7 @@ galleryList.insertAdjacentHTML(`beforeend`, gallery);
         const imgLink = event.target.dataset.source;
         const description = event.target.alt;
 
-         if (event.target.nodeName !== "IMG") return;
+         if (event.target === event.currentTarget) return;
 
           const window = basicLightbox.create(`
             <img width="1440" height="696" src="${imgLink}" alt="${description}">`, {
